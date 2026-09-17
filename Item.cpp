@@ -6,7 +6,7 @@ Item::Item(int id, float weight)
 {
 }
 
-int Item::Getid() const
+int Item::GetId() const
 {
     return Id;
 }

@@ -6,7 +6,7 @@ public:
     
     Item(int id, float weight);
     
-    int Getid() const;
+    int GetId() const;
     
     float GetWeight() const;
     
