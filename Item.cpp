@@ -1,5 +1,7 @@
 #include "Item.h"
 
+#include <iostream>
+
 Item::Item(int id, float weight)
     : Id(id)
     , Weight(weight)
