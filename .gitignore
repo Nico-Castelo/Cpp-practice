@@ -1,3 +1,6 @@
+# Old folder
+OldFolder/
+
 # Prerequisites
 *.d
 
@@ -16,13 +19,13 @@
 
 # Debugger Files
 *.pdb
+*.idb
 
 # Compiled Dynamic libraries
 *.so
 *.dylib
 *.dll
 *.so.*
-
 
 # Fortran module files
 *.mod
@@ -39,10 +42,20 @@
 *.out
 *.app
 
-# Build directories
+# Build directories (compiler / MSBuild output from Rider)
 build/
 Build/
 build-*/
+cmake-build-*/
+out/
+x64/
+Win32/
+[Dd]ebug/
+[Rr]elease/
+*.tlog
+*.recipe
+*.iobj
+*.ipdb
 
 # CMake generated files
 CMakeFiles/
@@ -67,3 +80,11 @@ vcpkg_installed/
 # test output & cache
 Testing/
 .cache/
+
+# Rider / JetBrains
+.idea/
+*.iml
+*.iws
+*.ipr
+*.user
+*.DotSettings.user
