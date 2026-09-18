@@ -11,6 +11,10 @@ public:
     
     float GetTotalWeight() const;
     
+    const Item* FindItemById(int Id) const;
+    
+    bool RemoveItemById(int Id);
+    
 private:
     
     std::vector<Item> Items;
