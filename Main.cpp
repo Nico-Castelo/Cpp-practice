@@ -1,33 +1,28 @@
-
 #include <iostream>
+#include <memory>
+#include <vector>
 
-#include "Inventory.h"
-#include "Item.h"
+#include "Items/Bow.h"
+#include "Items/Sword.h"
+#include "Items/Weapon.h"
 
-void PrintItem(const Item& item)
+
+void PrintWeapon(const Weapon& weapon)
 {
-    std::cout << "Id: " << item.GetId() << "\n";
-    std::cout << "Weight: " << item.GetWeight() << "\n";
+    std::cout << "Weapon: " << weapon.GetName() << " Damage: " << weapon.GetDamage() << "\n";
 }
 
 int main()
 {
-    const Item potion(1, 0.5);
+    std::vector<std::unique_ptr<Weapon>> Weapons;
     
-    Item PotionCopy = potion;
-    
-    const Item& potionReference = potion;
-    
-    PrintItem(potion);
-    PrintItem(PotionCopy);
-    PrintItem(potionReference);
-    
-    Inventory items;
-    
-    items.AddItem(potion);
-    items.AddItem(PotionCopy);
-    
-    std::cout << "Total weight: " << items.GetTotalWeight() << "\n";
+    Weapons.push_back(std::make_unique<Sword>("Katana", 25.0f));
+    Weapons.push_back(std::make_unique<Bow>("ElvenBow", 10.0f));
+
+    for (std::unique_ptr<Weapon>& Weapon : Weapons)
+    {
+        Weapon->Use();
+    }
     
     return 0;
 }
