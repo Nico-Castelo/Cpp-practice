@@ -19,6 +19,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Enemy\Enemy.cpp" />
+    <ClCompile Include="Examples\Auto\AutoExamples.cpp" />
+    <ClCompile Include="Examples\Casts\CastExamples.cpp" />
+    <ClCompile Include="Examples\CopyMove\Inventory.cpp" />
+    <ClCompile Include="Examples\EnumClass\EnumClassExamples.cpp" />
+    <ClCompile Include="Examples\Lambdas\LambdaExamples.cpp" />
+    <ClCompile Include="Examples\Overloading\OverloadingExamples.cpp" />
+    <ClCompile Include="Examples\Struct\StructExamples.cpp" />
     <ClCompile Include="Items\Bow.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -247,12 +255,24 @@
       <SDLCheck>true</SDLCheck>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
+    <ClCompile Include="Lambdas\Unit.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Player\Player.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Enemy\Enemy.h" />
+    <ClInclude Include="Examples\Auto\AutoExamples.h" />
+    <ClInclude Include="Examples\Casts\CastExamples.h" />
+    <ClInclude Include="Examples\CopyMove\Inventory.h" />
+    <ClInclude Include="Examples\EnumClass\EnumClassExamples.h" />
+    <ClInclude Include="Examples\Lambdas\LambdaExamples.h" />
+    <ClInclude Include="Examples\Overloading\OverloadingExamples.h" />
+    <ClInclude Include="Examples\Struct\StructExamples.h" />
     <ClInclude Include="Items\Bow.h" />
     <ClInclude Include="Items\Sword.h" />
     <ClInclude Include="Items\Weapon.h" />
+    <ClInclude Include="Lambdas\Unit.h" />
+    <ClInclude Include="Player\Player.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
