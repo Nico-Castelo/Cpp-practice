@@ -6,7 +6,7 @@
 
 int main()
 {
-    std::vector<Unit> Units = {
+    /*std::vector<Unit> Units = {
         Unit("Unit1", 100.0f, 25.0f),
         Unit("Unit2", 100.0f, 10.0f),
         Unit("Unit3", 100.0f, 50.0f),
@@ -72,7 +72,9 @@ int main()
         unit.TakeDamage(60.0f);   // already dead: OnDeath is not called again
     }
 
-    std::cout << "Kill count: " << KillCount << "\n";
+    std::cout << "Kill count: " << KillCount << "\n";*/
+    
+    
 
     return 0;
 }

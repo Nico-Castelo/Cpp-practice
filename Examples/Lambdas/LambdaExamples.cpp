@@ -4,7 +4,8 @@
 #include <functional>   // std::function
 #include <iostream>
 #include <string>
-#include <utility>      // std::move
+#include <unordered_map>
+#include <utility>      // std::move, std::pair
 #include <vector>
 
 // Small classes for this example only (namespace so they don't clash with yours)
@@ -198,4 +199,84 @@ void RunLambdaExamples()
 
     // A moved-from object is valid but its contents aren't guaranteed: don't use it again. In practice, empty
     std::cout << "  Names has " << Names.size() << " elements after the move\n";
+
+    // ==================================================================
+    // Lambdas with MAPS
+    // Each element of a map is a std::pair<const Key, Value>: the lambda receives that pair.
+    // The key is const: you can't change a key, only its value.
+    // ==================================================================
+
+    std::unordered_map<std::string, int> Inventory = {
+        { "Healing Gourd", 3 },
+        { "Ceramic Shard", 0 },
+        { "Spirit Emblem", 15 },
+        { "Pellet", 0 },
+    };
+
+    // ------------------------------------------------------------------
+    // 10. count_if over a map: the parameter is the pair
+    // ------------------------------------------------------------------
+    std::cout << "10. count_if over a map\n";
+
+    // Explicit type of the pair (long, but it shows what's really inside)
+    auto EmptyCount = std::count_if(Inventory.begin(), Inventory.end(),
+        [](const std::pair<const std::string, int>& Item) { return Item.second == 0; });
+
+    // Same thing with auto in the parameter (C++14): much more common
+    auto EmptyCountAuto = std::count_if(Inventory.begin(), Inventory.end(),
+        [](const auto& Item) { return Item.second == 0; });
+
+    std::cout << "  Empty items: " << EmptyCount << " / " << EmptyCountAuto << "\n";
+
+    // ------------------------------------------------------------------
+    // 11. find_if over a map: search by VALUE (find only searches by key)
+    // ------------------------------------------------------------------
+    std::cout << "11. find_if by value\n";
+
+    int Threshold = 10;
+    auto Plenty = std::find_if(Inventory.begin(), Inventory.end(),
+        [Threshold](const auto& Item) { return Item.second > Threshold; });
+
+    if (Plenty != Inventory.end())
+    {
+        std::cout << "  Lots of: " << Plenty->first << " (" << Plenty->second << ")\n";
+    }
+
+    // ------------------------------------------------------------------
+    // 12. for_each + capture by reference: total count
+    // ------------------------------------------------------------------
+    std::cout << "12. for_each over a map\n";
+
+    int TotalItems = 0;
+    std::for_each(Inventory.begin(), Inventory.end(),
+        [&TotalItems](const auto& Item) { TotalItems += Item.second; });
+
+    std::cout << "  Total items: " << TotalItems << "\n";
+
+    // ------------------------------------------------------------------
+    // 13. erase_if on a map (C++20): remove the items with count 0
+    // ------------------------------------------------------------------
+    std::cout << "13. erase_if over a map\n";
+
+    std::erase_if(Inventory, [](const auto& Item) { return Item.second == 0; });
+
+    for (const auto& [Name, Amount] : Inventory)
+    {
+        std::cout << "  " << Name << ": " << Amount << "\n";
+    }
+
+    // ------------------------------------------------------------------
+    // 14. A map can't be sorted by value: copy to a vector of pairs and sort that
+    // ------------------------------------------------------------------
+    std::cout << "14. Sort a map by value\n";
+
+    std::vector<std::pair<std::string, int>> Sorted(Inventory.begin(), Inventory.end());
+
+    std::sort(Sorted.begin(), Sorted.end(),
+        [](const auto& a, const auto& b) { return a.second > b.second; });   // most first
+
+    for (const auto& [Name, Amount] : Sorted)
+    {
+        std::cout << "  " << Name << ": " << Amount << "\n";
+    }
 }

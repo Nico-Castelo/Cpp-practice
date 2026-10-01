@@ -19,9 +19,16 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Drills\Squad.cpp" />
     <ClCompile Include="Enemy\Enemy.cpp" />
+    <ClCompile Include="Examen\Arena.cpp" />
+    <ClCompile Include="Examen\Combatant.cpp" />
+    <ClCompile Include="Examen\FireMage.cpp" />
+    <ClCompile Include="Examen\Samurai.cpp" />
+    <ClCompile Include="Examples\Algorithms\AlgorithmExamples.cpp" />
     <ClCompile Include="Examples\Auto\AutoExamples.cpp" />
     <ClCompile Include="Examples\Casts\CastExamples.cpp" />
+    <ClCompile Include="Examples\Containers\ContainerExamples.cpp" />
     <ClCompile Include="Examples\CopyMove\Inventory.cpp" />
     <ClCompile Include="Examples\EnumClass\EnumClassExamples.cpp" />
     <ClCompile Include="Examples\Lambdas\LambdaExamples.cpp" />
@@ -260,9 +267,18 @@
     <ClCompile Include="Player\Player.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Drills\Soldier.h" />
+    <ClInclude Include="Drills\Squad.h" />
     <ClInclude Include="Enemy\Enemy.h" />
+    <ClInclude Include="Examen\Arena.h" />
+    <ClInclude Include="Examen\Combatant.h" />
+    <ClInclude Include="Examen\CombatTypes.h" />
+    <ClInclude Include="Examen\FireMage.h" />
+    <ClInclude Include="Examen\Samurai.h" />
+    <ClInclude Include="Examples\Algorithms\AlgorithmExamples.h" />
     <ClInclude Include="Examples\Auto\AutoExamples.h" />
     <ClInclude Include="Examples\Casts\CastExamples.h" />
+    <ClInclude Include="Examples\Containers\ContainerExamples.h" />
     <ClInclude Include="Examples\CopyMove\Inventory.h" />
     <ClInclude Include="Examples\EnumClass\EnumClassExamples.h" />
     <ClInclude Include="Examples\Lambdas\LambdaExamples.h" />
