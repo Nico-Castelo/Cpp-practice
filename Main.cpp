@@ -2,6 +2,8 @@
 #include <iostream>
 #include <vector>
 
+#include "Drills/Medic.h"
+#include "Drills/Soldier.h"
 #include "Lambdas/Unit.h"
 
 int main()
@@ -74,7 +76,15 @@ int main()
 
     std::cout << "Kill count: " << KillCount << "\n";*/
     
+    std::shared_ptr<Soldier> Wolf = std::make_shared<Soldier>("Wolf");
     
+    Medic MyMedic;
+    MyMedic.SetPatient(Wolf);
+    MyMedic.Heal();
+    
+    Wolf.reset();
+    
+    MyMedic.Heal();
 
     return 0;
 }

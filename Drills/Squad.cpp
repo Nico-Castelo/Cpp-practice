@@ -1,6 +1,7 @@
 #include "Squad.h"
 
 #include <algorithm>
+#include <numeric>
 
 #include "Soldier.h"
 
@@ -44,4 +45,42 @@ const Soldier* Squad::FindByName(const std::string& name) const
     }
     
     return nullptr;
+}
+
+float Squad::TotalDamage() const
+{
+    auto TotalDamage = std::accumulate(Members.begin(), Members.end(), 0.0f,
+        [](float sum, const std::unique_ptr<Soldier>& member)
+        {
+            return sum + member->GetDamage();
+        });
+    
+    return TotalDamage;
+}
+
+void Squad::RecordKill(const std::string& name)
+{
+    Kills[name]++;
+}
+
+int Squad::GetKills(const std::string& name) const
+{
+    auto FoundIterator = Kills.find(name);
+    if (FoundIterator != Kills.end())
+    {
+        return FoundIterator->second;
+    }
+    
+    return 0;
+}
+
+int Squad::CountByRank(ERank rank) const
+{
+    auto RankedSoldiers = std::count_if(Members.begin(), Members.end(),
+        [rank](const std::unique_ptr<Soldier>& member)
+        {
+            return member->GetRank() == rank;
+        });
+    
+    return static_cast<int>(RankedSoldiers);
 }

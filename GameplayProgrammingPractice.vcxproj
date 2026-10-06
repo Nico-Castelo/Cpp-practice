@@ -19,7 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Drills\Medic.cpp" />
+    <ClCompile Include="Drills\Soldier.cpp" />
     <ClCompile Include="Drills\Squad.cpp" />
+    <ClCompile Include="Drills\Veteran.cpp" />
     <ClCompile Include="Enemy\Enemy.cpp" />
     <ClCompile Include="Examen\Arena.cpp" />
     <ClCompile Include="Examen\Combatant.cpp" />
@@ -267,8 +270,10 @@
     <ClCompile Include="Player\Player.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Drills\Medic.h" />
     <ClInclude Include="Drills\Soldier.h" />
     <ClInclude Include="Drills\Squad.h" />
+    <ClInclude Include="Drills\Veteran.h" />
     <ClInclude Include="Enemy\Enemy.h" />
     <ClInclude Include="Examen\Arena.h" />
     <ClInclude Include="Examen\Combatant.h" />
