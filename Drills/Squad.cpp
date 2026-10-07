@@ -84,3 +84,18 @@ int Squad::CountByRank(ERank rank) const
     
     return static_cast<int>(RankedSoldiers);
 }
+
+void Squad::MarkWounded(const std::string& WoundedMember)
+{
+    WoundedMembers.insert(WoundedMember);
+}
+
+bool Squad::IsWounded(const std::string& name) const
+{
+    return WoundedMembers.contains(name);
+}
+
+void Squad::HealAll()
+{
+    WoundedMembers.clear();
+}

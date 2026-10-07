@@ -20,6 +20,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Drills\Medic.cpp" />
+    <ClCompile Include="Drills\ReinforcedShield.cpp" />
+    <ClCompile Include="Drills\Shield.cpp" />
     <ClCompile Include="Drills\Soldier.cpp" />
     <ClCompile Include="Drills\Squad.cpp" />
     <ClCompile Include="Drills\Veteran.cpp" />
@@ -271,6 +273,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Drills\Medic.h" />
+    <ClInclude Include="Drills\ReinforcedShield.h" />
+    <ClInclude Include="Drills\Shield.h" />
     <ClInclude Include="Drills\Soldier.h" />
     <ClInclude Include="Drills\Squad.h" />
     <ClInclude Include="Drills\Veteran.h" />

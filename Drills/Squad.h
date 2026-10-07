@@ -2,6 +2,7 @@
 #include <memory>
 #include <string>
 #include <unordered_map>
+#include <unordered_set>
 #include <vector>
 
 enum class ERank;
@@ -28,11 +29,19 @@ public:
     int GetKills(const std::string& name) const;
     
     int CountByRank(ERank rank) const;
+    
+    void MarkWounded(const std::string& name);
+    
+    bool IsWounded(const std::string& name) const;
+    
+    void HealAll();
 
 
 private:
     
     std::vector<std::unique_ptr<Soldier>> Members;
+    
+    std::unordered_set<std::string> WoundedMembers;
     
     std::unordered_map<std::string, int> Kills;
 };
