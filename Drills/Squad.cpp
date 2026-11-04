@@ -99,3 +99,22 @@ void Squad::HealAll()
 {
     WoundedMembers.clear();
 }
+
+size_t Squad::RemoveDead()
+{
+    auto DeadCount = std::erase_if(Members, [](const std::unique_ptr<Soldier>& s)
+    {
+        return !s->IsAlive();
+    });
+    
+    return DeadCount;
+    
+}
+
+void Squad::RemoveWeakerThan(float minHealth)
+{
+    std::erase_if(Members, [minHealth](const std::unique_ptr<Soldier>& s)
+    {
+        return s->GetHealth() < minHealth;
+    });
+}

@@ -1,90 +1,22 @@
-#include <algorithm>
 #include <iostream>
-#include <vector>
-
-#include "Drills/Medic.h"
-#include "Drills/Soldier.h"
-#include "Lambdas/Unit.h"
+#include "Test/Vector.h"
 
 int main()
 {
-    /*std::vector<Unit> Units = {
-        Unit("Unit1", 100.0f, 25.0f),
-        Unit("Unit2", 100.0f, 10.0f),
-        Unit("Unit3", 100.0f, 50.0f),
-    };
     
-    float MinAttack = 20.0f;
-    
-    auto FoundIt = std::find_if(Units.begin(), Units.end(),
-        [MinAttack](const Unit& u)
-        {
-            return u.GetDamage() > MinAttack;
-        });
-    
-    if (FoundIt != Units.end())
-    {
-        std::cout << "Attack unit with more than MinAttack: " << FoundIt->GetName() << "\n";
-    }
-    
-    auto AliveCount = std::count_if(Units.begin(), Units.end(),
-        [](const Unit& u)
-        {
-            return u.GetHealth() > 0;
-        });
-    
-    std::cout << "Units alive: " << AliveCount << "\n";
-    
-    float TotalAttack = 0.0f;
-    
-    std::for_each(Units.begin(), Units.end(),
-        [&TotalAttack](const Unit& u)
-        {
-            TotalAttack += u.GetDamage();
-        });
-    
-    std::cout << "Total damage: " << TotalAttack << "\n";
-    
-    std::sort(Units.begin(), Units.end(),
-        [](const Unit& a, const Unit& b)
-        {
-            return a.GetHealth() > b.GetHealth();
-        });
-    
-    for (const Unit& u : Units)
-    {
-        std::cout << "  " << u.GetName() << " (" << u.GetHealth() << ")\n";
-    }
-    
-    int KillCount = 0;
+    float velocity = 0.0f;    // empieza parado
+    float position = 0.0f;    // empieza en el 0
+    float deltaTime = 0.1f;   // el mismo en todos los frames, por simplificar
 
-    for (Unit& unit : Units)
+    for (int frame = 1; frame <= 10; frame++)
     {
-        unit.OnDeath = [&KillCount](const Unit& u)
-        {
-            std::cout << u.GetName() << " has died\n";
-            ++KillCount;
-        };
+        float direction = 0.0f;
+        if (frame <= 5) direction = 1.0f;
+        
+        velocity = UpdateVelocity(velocity, direction, deltaTime);
+        position += velocity * deltaTime;
+        std::cout << "Frame: " << frame << " Velocity: " << velocity << " Position: " << position << "\n";
     }
-
-    for (Unit& unit : Units)
-    {
-        unit.TakeDamage(60.0f);
-        unit.TakeDamage(60.0f);
-        unit.TakeDamage(60.0f);   // already dead: OnDeath is not called again
-    }
-
-    std::cout << "Kill count: " << KillCount << "\n";*/
-    
-    std::shared_ptr<Soldier> Wolf = std::make_shared<Soldier>("Wolf");
-    
-    Medic MyMedic;
-    MyMedic.SetPatient(Wolf);
-    MyMedic.Heal();
-    
-    Wolf.reset();
-    
-    MyMedic.Heal();
 
     return 0;
 }

@@ -174,7 +174,7 @@ void RunAlgorithmExamples()
     Values.erase(NewEnd, Values.end());
     std::cout << "  After erase: " << Values.size() << "\n";                       // 3
 
-    // C++20: erase_if does both in one step. It takes the CONTAINER, not begin/end
+    // C++20: erase_if does both in one step. It takes the CONTAINER, not begin/endr
     std::erase_if(Enemies, [](const Enemy& e) { return !e.IsAlive(); });
     std::cout << "  Enemies alive after erase_if: " << Enemies.size() << "\n";     // 3
 

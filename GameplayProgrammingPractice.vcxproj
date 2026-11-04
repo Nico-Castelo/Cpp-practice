@@ -19,11 +19,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Drills\TotalDamage.cpp" />
     <ClCompile Include="Drills\Medic.cpp" />
     <ClCompile Include="Drills\ReinforcedShield.cpp" />
     <ClCompile Include="Drills\Shield.cpp" />
+    <ClCompile Include="Drills\Sniper.cpp" />
     <ClCompile Include="Drills\Soldier.cpp" />
     <ClCompile Include="Drills\Squad.cpp" />
+    <ClCompile Include="Drills\Stats.cpp" />
     <ClCompile Include="Drills\Veteran.cpp" />
     <ClCompile Include="Enemy\Enemy.cpp" />
     <ClCompile Include="Examen\Arena.cpp" />
@@ -270,13 +273,18 @@
     <ClCompile Include="Lambdas\Unit.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Player\Player.cpp" />
+    <ClCompile Include="Test\Cooldown.cpp" />
+    <ClCompile Include="Test\Vector.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Drills\TotalDamage.h" />
     <ClInclude Include="Drills\Medic.h" />
     <ClInclude Include="Drills\ReinforcedShield.h" />
     <ClInclude Include="Drills\Shield.h" />
+    <ClInclude Include="Drills\Sniper.h" />
     <ClInclude Include="Drills\Soldier.h" />
     <ClInclude Include="Drills\Squad.h" />
+    <ClInclude Include="Drills\Stats.h" />
     <ClInclude Include="Drills\Veteran.h" />
     <ClInclude Include="Enemy\Enemy.h" />
     <ClInclude Include="Examen\Arena.h" />
@@ -298,6 +306,11 @@
     <ClInclude Include="Items\Weapon.h" />
     <ClInclude Include="Lambdas\Unit.h" />
     <ClInclude Include="Player\Player.h" />
+    <ClInclude Include="Test\Cooldown.h" />
+    <ClInclude Include="Test\Vector.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Math\" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

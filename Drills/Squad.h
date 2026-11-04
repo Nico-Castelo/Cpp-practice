@@ -35,6 +35,10 @@ public:
     bool IsWounded(const std::string& name) const;
     
     void HealAll();
+    
+    size_t RemoveDead();
+    
+    void RemoveWeakerThan(float minHealth);
 
 
 private:
