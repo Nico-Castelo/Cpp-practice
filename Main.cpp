@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Test/Vector.h"
+#include "Math/Vector.h"
 
 int main()
 {
@@ -13,7 +13,7 @@ int main()
         float direction = 0.0f;
         if (frame <= 5) direction = 1.0f;
         
-        velocity = UpdateVelocity(velocity, direction, deltaTime);
+        velocity = Vector::UpdateVelocity(velocity, direction, deltaTime);
         position += velocity * deltaTime;
         std::cout << "Frame: " << frame << " Velocity: " << velocity << " Position: " << position << "\n";
     }
