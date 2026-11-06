@@ -1,21 +1,31 @@
+
 #include <iostream>
-#include "Math/Vector.h"
+
+#include "Vector.h"
 
 int main()
 {
-    
-    float velocity = 0.0f;    // empieza parado
-    float position = 0.0f;    // empieza en el 0
-    float deltaTime = 0.1f;   // el mismo en todos los frames, por simplificar
+    Vec2 velocity = GetZeroVector();
+    Vec2 position = GetZeroVector();
+    float deltaTime = 0.1f;
 
     for (int frame = 1; frame <= 10; frame++)
     {
-        float direction = 0.0f;
-        if (frame <= 5) direction = 1.0f;
+        Vec2 input = GetZeroVector();
         
-        velocity = Vector::UpdateVelocity(velocity, direction, deltaTime);
+        if (frame <= 5)
+        {
+            input = {1.0f, -1.0f};
+        }
+        
+        velocity = UpdateVelocity2D(velocity, input, deltaTime);
+        
         position += velocity * deltaTime;
-        std::cout << "Frame: " << frame << " Velocity: " << velocity << " Position: " << position << "\n";
+        
+        std::cout << "Frame " << frame
+          << " | Velocity: " << velocity.x << ", " << velocity.y
+          << " | Length: " << Length(velocity)
+          << "\n";
     }
 
     return 0;
