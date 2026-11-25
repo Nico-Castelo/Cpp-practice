@@ -29,10 +29,18 @@ Vec2 MoveTowards(Vec2 current, Vec2 target, float speed, float deltaTime);
 // ---------- Mecánicas ----------
 bool IsOnSight(Vec2 enemyPos, Vec2 playerPos, float detectionRadius);
 
+// ---------- Interpolación ----------
+float Lerp(float a, float b, float t);
+Vec2 Lerp2D(Vec2 a, Vec2 b, float t);
+float InterpTo(float current, float target, float speed, float deltaTime);
+Vec2 InterpTo2D(Vec2 current, Vec2 target, float speed, float deltaTime);
+
 // 1D
 float Accelerate(float velocity, float direction, float acceleration, float maxSpeed, float deltaTime);
 float ApplyFriction(float velocity, float friction, float deltaTime);
 float UpdateVelocity(float velocity, float direction, float deltaTime);
+bool isOnGround(float positionY, float groundY);
+void ClampToGround(float& positionY, float& velocityY, float groundY);
 
 // 2D
 Vec2 Accelerate2D(Vec2 velocity, Vec2 input, float acceleration, float maxSpeed, float deltaTime);

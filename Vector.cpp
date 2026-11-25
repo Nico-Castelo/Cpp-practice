@@ -213,3 +213,18 @@ Vec2 InterpTo2D(Vec2 current, Vec2 target, float speed, float deltaTime)
     
     return Lerp2D(current, target, t);
 }
+
+bool IsOnGround(float positionY, float groundY)
+{
+    return positionY >= groundY;
+}
+
+void ClampToGround(float& positionY, float& velocityY, float groundY)
+{
+    if (IsOnGround(positionY, groundY))
+    {
+        positionY = groundY;
+        velocityY = 0.0f;
+    }
+}
+
