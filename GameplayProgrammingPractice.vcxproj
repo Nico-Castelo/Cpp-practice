@@ -20,11 +20,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Cooldown.cpp" />
+    <ClCompile Include="DashCharges.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Vector.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cooldown.h" />
+    <ClInclude Include="DashCharges.h" />
     <ClInclude Include="Vector.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
