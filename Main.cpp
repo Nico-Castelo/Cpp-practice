@@ -1,32 +1,36 @@
-
 #include <iostream>
 
 #include "Vector.h"
 
 int main()
 {
-    Vec2 velocity = GetZeroVector();
-    Vec2 position = GetZeroVector();
-    float deltaTime = 0.1f;
+    float PositionY = 0.0f;
+    float VelocityY = 0.0f;
+    
+    float Gravity = 1000.0f;
+    float JumpSpeed = 500.0f;
+    float GroundY = 0.0f;
+    float DeltaTime = 0.1f;
+    
+    bool bJumpPressed = false;
 
-    for (int frame = 1; frame <= 10; frame++)
+    for (int i = 1; i <= 15; ++i)
     {
-        Vec2 input = GetZeroVector();
+        bJumpPressed = (i == 1);
         
-        if (frame <= 5)
+        if (bJumpPressed && IsOnGround(PositionY, GroundY))
         {
-            input = {1.0f, -1.0f};
+            VelocityY = -JumpSpeed;
         }
         
-        velocity = UpdateVelocity2D(velocity, input, deltaTime);
+        VelocityY += Gravity * DeltaTime;
+            
+        PositionY += VelocityY * DeltaTime;
         
-        position += velocity * deltaTime;
-        
-        std::cout << "Frame " << frame
-          << " | Velocity: " << velocity.x << ", " << velocity.y
-          << " | Length: " << Length(velocity)
-          << "\n";
+        ClampToGround(PositionY, VelocityY, GroundY);
+            
+        std::cout << "Frame: " << i << " "<< PositionY << " and " << VelocityY << "\n";
     }
-
+    
     return 0;
 }

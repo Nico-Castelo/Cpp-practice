@@ -39,7 +39,7 @@ Vec2 InterpTo2D(Vec2 current, Vec2 target, float speed, float deltaTime);
 float Accelerate(float velocity, float direction, float acceleration, float maxSpeed, float deltaTime);
 float ApplyFriction(float velocity, float friction, float deltaTime);
 float UpdateVelocity(float velocity, float direction, float deltaTime);
-bool isOnGround(float positionY, float groundY);
+bool IsOnGround(float positionY, float groundY);
 void ClampToGround(float& positionY, float& velocityY, float groundY);
 
 // 2D
