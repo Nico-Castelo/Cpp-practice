@@ -7,15 +7,17 @@ float ApplyGravity(float Velocity, float Gravity, float DeltaTime)
     return Velocity + Gravity * DeltaTime;
 }
 
+bool CanJump(bool bJumpPressed, float PositionY, float GroundY)
+{
+    return bJumpPressed && IsOnGround(PositionY, GroundY);
+}
+
 bool TryJump(float& Velocity, bool bJumpPressed, float PositionY, float GroundY, float JumpSpeed)
 {
-    if (bJumpPressed && IsOnGround(PositionY, GroundY))
-    {
-        Velocity = -JumpSpeed;
-        return true;
-    }
-    
-    return false;
+    if (!CanJump(bJumpPressed, PositionY, GroundY)) return false;
+
+    Velocity = -JumpSpeed;
+    return true;
 }
 
 float Move(float PositionY, float VelocityY, float DeltaTime)
