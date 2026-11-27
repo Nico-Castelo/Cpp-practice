@@ -1,6 +1,7 @@
 #include <iostream>
 #include <memory>
 #include "Vector.h"
+#include "DashCharges.h"
 
 struct Player
 {
@@ -53,8 +54,30 @@ void PrintFrame(float PositionY, float VelocityY, int Frame)
     std::cout << "Frame: " << Frame << " " << PositionY << " and " << VelocityY << "\n";
 }
 
+void TestDashCharges()
+{
+    const int MaxDashCharges = 2;
+    const float DashFullRefillDelay = 3.0f;
+
+    DashCharges Dash(MaxDashCharges, DashFullRefillDelay);
+
+    std::cout << std::boolalpha;
+    std::cout << "1.  GetCharges(0)   = " << Dash.GetCharges(0.0f) << "    (expected 2)\n";
+    std::cout << "2.  TryUse(1)       = " << Dash.TryUse(1.0f) << " (expected true)\n";
+    std::cout << "3.  TryUse(2)       = " << Dash.TryUse(2.0f) << " (expected true)\n";
+    std::cout << "4.  TryUse(3)       = " << Dash.TryUse(3.0f) << " (expected false)\n";
+    std::cout << "5.  GetCharges(4)   = " << Dash.GetCharges(4.0f) << "    (expected 0)\n";
+    std::cout << "6.  GetCharges(5)   = " << Dash.GetCharges(5.0f) << "    (expected 2)\n";
+    std::cout << "7.  TryUse(5.5)     = " << Dash.TryUse(5.5f) << " (expected true)\n";
+    std::cout << "8.  TryUse(6)       = " << Dash.TryUse(6.0f) << " (expected true)\n";
+    std::cout << "9.  GetCharges(8.9) = " << Dash.GetCharges(8.9f) << "    (expected 0)\n";
+    std::cout << "10. GetCharges(9)   = " << Dash.GetCharges(9.0f) << "    (expected 2)\n";
+}
+
 int main()
 {
+    TestDashCharges();
+
     std::shared_ptr<Player> PlayerCharacter = std::make_shared<Player>();
     
     Enemy Grunt;
