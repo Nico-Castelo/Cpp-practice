@@ -1,6 +1,29 @@
 #include <iostream>
-
+#include <memory>
 #include "Vector.h"
+
+struct Player
+{
+    int Health = 100;
+};
+
+struct Enemy
+{
+    std::weak_ptr<Player> Target;
+    
+    void Attack()
+    {
+       if (std::shared_ptr<Player> Locked = Target.lock())
+       {
+           Locked->Health -= 10;
+           std::cout << "Target health: " << Locked->Health << "\n";
+       }
+       else
+       {
+           std::cout << "Enemy has no target\n";
+       }
+    }
+};
 
 float ApplyGravity(float Velocity, float Gravity, float DeltaTime)
 {
@@ -32,6 +55,15 @@ void PrintFrame(float PositionY, float VelocityY, int Frame)
 
 int main()
 {
+    std::shared_ptr<Player> PlayerCharacter = std::make_shared<Player>();
+    
+    Enemy Grunt;
+    Grunt.Target = PlayerCharacter;
+    
+    Grunt.Attack();
+    PlayerCharacter.reset();
+    Grunt.Attack();
+    
     float PositionY = 0.0f;
     float VelocityY = 0.0f;
     
