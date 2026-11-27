@@ -2,6 +2,32 @@
 
 #include "Vector.h"
 
+float ApplyGravity(float Velocity, float Gravity, float DeltaTime)
+{
+    return Velocity + Gravity * DeltaTime;
+}
+
+bool TryJump(float& Velocity, bool bJumpPressed, float PositionY, float GroundY, float JumpSpeed)
+{
+    if (bJumpPressed && IsOnGround(PositionY, GroundY))
+    {
+        Velocity = -JumpSpeed;
+        return true;
+    }
+    
+    return false;
+}
+
+float Move(float PositionY, float VelocityY, float DeltaTime)
+{
+    return PositionY + VelocityY * DeltaTime;
+}
+
+void PrintFrame(float PositionY, float VelocityY, int Frame)
+{
+    std::cout << "Frame: " << Frame << " " << PositionY << " and " << VelocityY << "\n";
+}
+
 int main()
 {
     float PositionY = 0.0f;
@@ -18,18 +44,15 @@ int main()
     {
         bJumpPressed = (i == 1);
         
-        if (bJumpPressed && IsOnGround(PositionY, GroundY))
-        {
-            VelocityY = -JumpSpeed;
-        }
+        TryJump(VelocityY, bJumpPressed, PositionY, GroundY, JumpSpeed);
         
-        VelocityY += Gravity * DeltaTime;
+        VelocityY = ApplyGravity(VelocityY, Gravity, DeltaTime);
             
-        PositionY += VelocityY * DeltaTime;
+        PositionY = Move(PositionY, VelocityY, DeltaTime);
         
         ClampToGround(PositionY, VelocityY, GroundY);
             
-        std::cout << "Frame: " << i << " "<< PositionY << " and " << VelocityY << "\n";
+        PrintFrame(PositionY, VelocityY, i);
     }
     
     return 0;
